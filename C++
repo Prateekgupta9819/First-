@@ -1,0 +1,45 @@
+#include<bits/stdc++.h>
+#define mod 1000000007
+#define pb push_back
+#define mp make_pair
+#define pf push_front
+#define lli long long int 
+#define ll long long 
+#define inf 1000000000000000000
+#define mp make_pair
+#define vc vector
+#define pq priority_queue
+#define pll pair<ll,ll> 
+#define pls pair<ll,string>
+#define psl pair<string,ll>
+#define plc pair<ll,char>
+#define pcl pair<char,ll>
+#define pss pair<string,string>
+#define FOR(i,n)    for(int i=0;i<n;i++)
+#define FOR1(i,a,b) for(int i = a; i<=b; i++)
+using namespace std;
+
+int main()
+{
+    int l,sum=0,ans=0;
+    cin>>l;
+    string s;
+    cin>>s;
+    map<int,int> mp;
+    mp[0]=0;
+    for(int i=0;i<l;i++)
+    {
+        if(s[i]=='0')
+             sum-=1;
+        else
+             sum+=1;
+        if(sum==0)
+             ans= max(ans,i+1);
+       if(mp[sum]!=0)
+             ans = max(ans,i+1-mp[sum]);
+       else 
+             mp[sum]=i+1;
+    }
+    cout<<ans;
+    return 0;
+}
